@@ -1,3 +1,4 @@
-FROM openjdk:11-jdk
-COPY build/libs/test-0.0.1-SNAPSHOT.jar
-CMD ["java","-jar", test-0.0.1-SNAPSHOT.jar]
+FROM openjdk:11
+ARG JAR_FILE=*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
