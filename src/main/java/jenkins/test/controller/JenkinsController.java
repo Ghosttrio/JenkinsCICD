@@ -10,4 +10,8 @@ public class JenkinsController {
     public String main(){
         return "main";
     }
+
+    public int logic(int a, int b){
+       return a+b;
+    }
 }
