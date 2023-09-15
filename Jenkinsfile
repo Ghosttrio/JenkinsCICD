@@ -18,9 +18,11 @@ pipeline {
                 }
             }
             steps {
-                sh '''docker build --build-arg DEPENDENCY=build/dependency -t chaordadocker/matchuum-backend --platform linux/amd64 .
+                script{
+                    sh '''docker build --build-arg DEPENDENCY=build/dependency -t chaordadocker/matchuum-backend --platform linux/amd64 .
 
                     docker push chaordadocker/matchuum-backend'''
+                    }
             }
         }
 
