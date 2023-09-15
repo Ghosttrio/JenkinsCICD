@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('git') {
             steps {
-                git branch: 'master', credentialsId: 'credentialmasonkey', url: 'https://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@github.com/hsyang-chaorda/chaorda_matchuum_last.git'
+                git branch: 'master', credentialsId: 'credentialmasonkey', url: 'https://github.com/Ghosttrio/JenkinsCICD.git'
             }
         }
         stage('build') {
