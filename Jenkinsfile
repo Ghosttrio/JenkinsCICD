@@ -9,23 +9,23 @@ pipeline {
             }
         }
 
-//         stage('build') {
-//             steps {
-//                 script{
-//                     sh '''chmod +x gradlew
-//                         ./gradlew clean test
-//                         ./gradlew clean build'''
-//                 }
-//             }
-//             steps {
-//                 script{
-//                     sh '''docker build --build-arg DEPENDENCY=build/dependency -t chaordadocker/matchuum-backend --platform linux/amd64 .
-//
-//                     docker push chaordadocker/matchuum-backend'''
-//                 }
-//             }
-//         }
-//
+        stage('test') {
+            steps {
+                script{
+                    sh '''chmod +x gradlew
+                        ./gradlew clean test
+                        ./gradlew clean build'''
+                }
+            }
+            steps {
+                script{
+                    sh '''docker build --build-arg DEPENDENCY=build/dependency -t chaordadocker/matchuum-backend --platform linux/amd64 .
+
+                    docker push chaordadocker/matchuum-backend'''
+                }
+            }
+        }
+
         stage('deployments') {
             parallel {
                 stage('deploy to prod') {
