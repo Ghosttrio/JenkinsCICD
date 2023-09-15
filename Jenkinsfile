@@ -2,11 +2,13 @@ pipeline {
     agent any
 
     stages {
+
         stage('Fetch repository') {
             steps {
                 git branch: 'master', credentialsId: 'gitHub-token', url: 'https://github.com/Ghosttrio/JenkinsCICD.git'
             }
         }
+
         stage('build') {
             steps {
                 sh '''chmod +x gradlew
@@ -19,6 +21,7 @@ pipeline {
                     docker push chaordadocker/matchuum-backend'''
             }
         }
+
         stage('deployments') {
             parallel {
                 stage('deploy to prod') {
@@ -34,5 +37,6 @@ pipeline {
                 }
             }
         }
+
     }
 }
