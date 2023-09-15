@@ -12,9 +12,9 @@ pipeline {
         stage('test') {
             steps {
                 script{
-                    sh 'chmod +x gradlew
-                        ./gradlew clean test
-                        ./gradlew clean build'
+                    sh 'chmod +x gradlew'
+                    sh './gradlew clean test'
+                    sh './gradlew clean build'
                 }
             }
             steps {
