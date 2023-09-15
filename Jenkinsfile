@@ -17,11 +17,16 @@ pipeline {
                     sh './gradlew clean build'
                 }
             }
-//             steps {
-//                     docker build --build-arg DEPENDENCY=build/dependency -t chaordadocker/matchuum-backend --platform linux/amd64 .
-//
-//                     docker push chaordadocker/matchuum-backend
-//             }
+        }
+
+        stage('docker'){
+            steps{
+                script{
+                    sh 'docker build --build-arg DEPENDENCY=build/dependency -t chaordadocker/matchuum-backend --platform linux/amd64 .'
+
+                    sh 'docker push chaordadocker/matchuum-backend'
+                }
+            }
         }
 
         stage('deployments') {
