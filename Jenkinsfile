@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('git') {
+        stage('Fetch repository') {
             steps {
                 git branch: 'master', credentialsId: 'gitHub-token', url: 'https://github.com/Ghosttrio/JenkinsCICD.git'
             }
