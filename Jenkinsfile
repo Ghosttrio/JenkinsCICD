@@ -11,9 +11,11 @@ pipeline {
 
         stage('build') {
             steps {
-                sh '''chmod +x gradlew
-                    ./gradlew clean test
-                    ./gradlew clean build'''
+                script{
+                    sh '''chmod +x gradlew
+                        ./gradlew clean test
+                        ./gradlew clean build'''
+                }
             }
             steps {
                 sh '''docker build --build-arg DEPENDENCY=build/dependency -t chaordadocker/matchuum-backend --platform linux/amd64 .
